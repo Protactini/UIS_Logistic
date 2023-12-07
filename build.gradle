@@ -1,0 +1,41 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.2.0'
+    id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'com.UIS'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    sourceCompatibility = '17'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.kafka:spring-kafka'
+    // https://mvnrepository.com/artifact/org.hibernate/hibernate-gradle-plugin
+    implementation group: 'org.hibernate', name: 'hibernate-gradle-plugin', version: '5.6.15.Final'
+
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: '0.11.0'
+
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+
+    runtimeOnly 'org.postgresql:postgresql'
+
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.kafka:spring-kafka-test'
+    testImplementation 'org.springframework.security:spring-security-test'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
