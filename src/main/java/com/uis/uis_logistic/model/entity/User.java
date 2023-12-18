@@ -1,4 +1,4 @@
-package com.uis.uis_logistic.model;
+package com.uis.uis_logistic.model.entity;
 import lombok.Getter;
 import lombok.Setter;
 
