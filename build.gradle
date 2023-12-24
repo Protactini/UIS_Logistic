@@ -27,6 +27,8 @@ dependencies {
 
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
 
+    implementation 'io.jsonwebtoken:jjwt:0.9.1'// For JWT tokken
+
 
     runtimeOnly 'org.postgresql:postgresql'
 
