@@ -1,4 +1,5 @@
 package com.uis.uis_logistic.model.entity;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import java.sql.Timestamp;
@@ -7,9 +8,8 @@ import javax.persistence.*;
 
 
 @Entity
-@Getter
-@Setter
-@Table(name = "Items")
+@Data
+@Table(name = "orders")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -13,32 +13,32 @@ import org.springframework.security.core.AuthenticationException;
 @RestController
 public class AuthenticationController {
 
-    private final AuthenticationManager authenticationManager;
-    private final JwtUtil jwtTokenUtil;
-
-    public AuthenticationController(AuthenticationManager authenticationManager, JwtUtil jwtTokenUtil) {
-        this.authenticationManager = authenticationManager;
-        this.jwtTokenUtil = jwtTokenUtil;
-    }
-
-    @PostMapping("/authenticate")
-    public ResponseEntity<?> createAuthenticationToken(@RequestBody LoginRequest authenticationRequest) {
-        try {
-            // Authenticate the user
-            Authentication authenticate = authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(
-                            authenticationRequest.getUsername(),
-                            authenticationRequest.getPassword()
-                    )
-            );
-
-            // If authentication was successful, generate a JWT token
-            final String jwt = jwtTokenUtil.generateToken(authenticationRequest.getUsername());
-
-            return ResponseEntity.ok(new AuthenticationResponse(jwt));
-        } catch (AuthenticationException e) {
-            return ResponseEntity.badRequest().body("Invalid credentials");
-        }
-    }
+//    private final AuthenticationManager authenticationManager;
+//    private final JwtUtil jwtTokenUtil;
+//
+//    public AuthenticationController(AuthenticationManager authenticationManager, JwtUtil jwtTokenUtil) {
+//        this.authenticationManager = authenticationManager;
+//        this.jwtTokenUtil = jwtTokenUtil;
+//    }
+//
+//    @PostMapping("/authenticate")
+//    public ResponseEntity<?> createAuthenticationToken(@RequestBody LoginRequest authenticationRequest) {
+//        try {
+//            // Authenticate the user
+//            Authentication authenticate = authenticationManager.authenticate(
+//                    new UsernamePasswordAuthenticationToken(
+//                            authenticationRequest.getUsername(),
+//                            authenticationRequest.getPassword()
+//                    )
+//            );
+//
+//            // If authentication was successful, generate a JWT token
+//            final String jwt = jwtTokenUtil.generateToken(authenticationRequest.getUsername());
+//
+//            return ResponseEntity.ok(new AuthenticationResponse(jwt));
+//        } catch (AuthenticationException e) {
+//            return ResponseEntity.badRequest().body("Invalid credentials");
+//        }
+//    }
 }
 

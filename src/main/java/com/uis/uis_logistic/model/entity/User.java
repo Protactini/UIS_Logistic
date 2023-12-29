@@ -1,4 +1,5 @@
 package com.uis.uis_logistic.model.entity;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,9 +8,8 @@ import java.sql.Timestamp;
 
 
 @Entity
-@Getter
-@Setter
-@Table(name = "Users")
+@Data
+@Table(name = "users")
 public class User {
 
     @Id @GeneratedValue
