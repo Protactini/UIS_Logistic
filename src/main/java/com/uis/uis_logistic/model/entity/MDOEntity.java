@@ -1,7 +1,5 @@
 package com.uis.uis_logistic.model.entity;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -10,7 +8,7 @@ import java.sql.Timestamp;
 @Entity
 @Data
 @Table(name = "mdo")
-public class MDO {
+public class MDOEntity {
     @Id
     @Column(name = "MDOID")
     private Integer mdoId;

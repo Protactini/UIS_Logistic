@@ -1,7 +1,5 @@
 package com.uis.uis_logistic.model.entity;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.List;
@@ -10,7 +8,7 @@ import java.util.List;
 @Entity
 @Data
 @Table(name = "mdr")
-public class MDR {
+public class MDREntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer mdrId;
@@ -36,6 +34,6 @@ public class MDR {
             joinColumns = @JoinColumn(name = "MDRID"),
             inverseJoinColumns = @JoinColumn(name = "ItemID")
     )
-    private List<Item> items;
+    private List<ItemEntity> items;
 
 }

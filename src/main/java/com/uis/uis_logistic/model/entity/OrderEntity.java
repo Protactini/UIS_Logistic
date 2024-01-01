@@ -1,7 +1,6 @@
 package com.uis.uis_logistic.model.entity;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+
 import java.sql.Timestamp;
 
 import javax.persistence.*;
@@ -10,7 +9,7 @@ import javax.persistence.*;
 @Entity
 @Data
 @Table(name = "orders")
-public class Order {
+public class OrderEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer orderId;
