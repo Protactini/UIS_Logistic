@@ -1,4 +1,4 @@
-package com.uis.uis_logistic.model.entity;
+package com.uis.uis_logistic.model;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -6,8 +6,8 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@Table(name = "purchasingapplicationitems")
-public class PurchasingApplicationItemEntity {
+@Table(name = "purchasingapplication")
+public class PurchasingApplicationEntity {
     @Id
     @Column(name = "OrderDetailsID")
     private Integer orderDetailsId;

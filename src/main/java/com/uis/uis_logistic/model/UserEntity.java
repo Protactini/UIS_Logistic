@@ -1,9 +1,7 @@
-package com.uis.uis_logistic.model.entity;
+package com.uis.uis_logistic.model;
 import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +10,6 @@ import java.util.List;
 @Entity
 @Data
 @Table(name = "users")
-@NoArgsConstructor
 public class UserEntity {
 
     @Id @GeneratedValue

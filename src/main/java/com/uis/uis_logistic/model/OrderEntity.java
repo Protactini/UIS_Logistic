@@ -1,4 +1,4 @@
-package com.uis.uis_logistic.model.entity;
+package com.uis.uis_logistic.model;
 import lombok.Data;
 
 import java.sql.Timestamp;
