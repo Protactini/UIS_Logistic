@@ -1,6 +1,7 @@
 package com.uis.uis_logistic;
 
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
@@ -9,6 +10,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 public class UisLogisticApplication {
 
     public static void main(String[] args) {
+
 
         SpringApplication.run(UisLogisticApplication.class, args);
     }

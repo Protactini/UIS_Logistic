@@ -10,17 +10,31 @@ GRANT ALL ON SCHEMA public TO public;
 
 -- Users Table
 CREATE TABLE Users (
-  ID integer PRIMARY KEY,
-  Username varchar,
-  Role varchar,
-  CompanyID integer,
-  Created_at timestamp
+  ID SERIAL  PRIMARY KEY,
+  username VARCHAR(255),
+  companyid INTEGER,
+  created_at TIMESTAMP,
+  password VARCHAR(255)
+);
+
+CREATE TABLE user_roles (
+    user_id INTEGER,
+    role_id INTEGER,
+    PRIMARY KEY (user_id, role_id),
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (role_id) REFERENCES roles(id) -- Assumes there is a roles table with an ID
 );
 
 -- Companies Table
-CREATE TABLE Companies (
-  ID integer PRIMARY KEY,
-  companyname varchar
+CREATE TABLE companies (
+    id SERIAL PRIMARY KEY,
+    companyname VARCHAR(255)
+);
+
+
+CREATE TABLE roles (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255)
 );
 
 -- Items Table

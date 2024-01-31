@@ -3,7 +3,7 @@ import lombok.Data;
 
 import java.sql.Timestamp;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 
 @Entity

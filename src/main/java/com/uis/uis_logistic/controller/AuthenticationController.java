@@ -7,6 +7,7 @@ import com.uis.uis_logistic.model.UserEntity;
 import com.uis.uis_logistic.repository.RoleRepository;
 import com.uis.uis_logistic.repository.UserRepository;
 import com.uis.uis_logistic.security.JWTGenerator;
+import com.uis.uis_logistic.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,46 +28,29 @@ import java.util.Collections;
 public class AuthenticationController {
 
     private AuthenticationManager authenticationManager;
-    private UserRepository userRepository;
-    private RoleRepository roleRepository;
-    private PasswordEncoder passwordEncoder;
-    private JWTGenerator jwtGenerator;
+    private UserService userService;
 
     @Autowired
-    public void AuthController(AuthenticationManager authenticationManager, UserRepository userRepository,
-                               RoleRepository roleRepository, PasswordEncoder passwordEncoder, JWTGenerator jwtGenerator) {
+    public void AuthController(AuthenticationManager authenticationManager, UserService userService) {
         this.authenticationManager = authenticationManager;
-        this.userRepository = userRepository;
-        this.roleRepository = roleRepository;
-        this.passwordEncoder = passwordEncoder;
-        this.jwtGenerator = jwtGenerator;
+        this.userService = userService;
     }
 
     @PostMapping("login")
-    public ResponseEntity<AuthResponseDTO> login(@RequestBody LoginDto loginDto){
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        loginDto.getUsername(),
-                        loginDto.getPassword()));
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        String token = jwtGenerator.generateToken(authentication);
+    public ResponseEntity<AuthResponseDTO> login(@RequestBody LoginDto loginDto) throws Exception {
+
+        String token = userService.JWTTokenGenerator(loginDto);
+
         return new ResponseEntity<>(new AuthResponseDTO(token), HttpStatus.OK);
     }
 
     @PostMapping("register")
     public ResponseEntity<String> register(@RequestBody RegisterDto registerDto) {
-        if (userRepository.existsByUsername(registerDto.getUsername())) {
+        if (userService.userExistByUsername(registerDto.getUsername())) {
             return new ResponseEntity<>("Username is taken!", HttpStatus.BAD_REQUEST);
         }
 
-        UserEntity user = new UserEntity();
-        user.setUsername(registerDto.getUsername());
-        user.setPassword(passwordEncoder.encode((registerDto.getPassword())));
-
-        RoleEntity roles = roleRepository.findByName("USER").get();
-        user.setRoles(Collections.singletonList(roles));
-
-        userRepository.save(user);
+        userService.addNewUser(registerDto);
 
         return new ResponseEntity<>("User registered success!", HttpStatus.OK);
     }

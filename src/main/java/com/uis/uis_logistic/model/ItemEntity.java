@@ -1,7 +1,7 @@
 package com.uis.uis_logistic.model;
 import lombok.Data;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.math.BigDecimal;
 @Entity
 @Data
