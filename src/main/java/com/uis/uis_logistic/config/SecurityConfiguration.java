@@ -37,7 +37,12 @@ public class SecurityConfiguration {
         http.csrf(AbstractHttpConfigurer::disable)
                 .exceptionHandling(e -> e.authenticationEntryPoint(authenticationEntryPoint))
                 .authorizeHttpRequests(authorize -> authorize
+<<<<<<< Updated upstream
                         .requestMatchers("/api/auth/**").permitAll()
+=======
+//                        .requestMatchers("/api/auth/**").permitAll()
+//                        .anyRequest().authenticated()
+>>>>>>> Stashed changes
                         .anyRequest().permitAll()
                 )
                 .httpBasic(Customizer.withDefaults())
